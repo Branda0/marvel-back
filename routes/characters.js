@@ -1,6 +1,8 @@
 const axios = require("axios");
 const express = require("express");
 const router = express.Router();
+
+const apiUrl = "https://lereacteur-marvel-api.herokuapp.com";
 // const formidable = require("express-formidable");
 // router.use(formidable());
 
@@ -13,7 +15,7 @@ router.get("/characters", async (req, res) => {
     const name = req.query.name || "";
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&limit=${limit}&skip=${skip}&name=${name}`
+      `${apiUrl}/characters?apiKey=${process.env.MARVEL_API_KEY}&limit=${limit}&skip=${skip}&name=${name}`
     );
 
     res.status(200).json(response.data);
@@ -26,7 +28,7 @@ router.get("/characters", async (req, res) => {
 router.get("/character/:id", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.id}?apiKey=${process.env.MARVEL_API_KEY}`
+      `${apiUrl}/character/${req.params.id}?apiKey=${process.env.MARVEL_API_KEY}`
     );
     res.status(200).json(response.data);
   } catch (error) {
