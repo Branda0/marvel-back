@@ -1,6 +1,8 @@
 const axios = require("axios");
 const express = require("express");
 const router = express.Router();
+
+const apiUrl = "https://lereacteur-marvel-api.herokuapp.com";
 // const formidable = require("express-formidable");
 // router.use(formidable());
 
@@ -12,7 +14,7 @@ router.get("/comics", async (req, res) => {
     const title = req.query.title || "";
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}&limit=${limit}&skip=${skip}&title=${title}`
+      `${apiUrl}/comics?apiKey=${process.env.MARVEL_API_KEY}&limit=${limit}&skip=${skip}&title=${title}`
     );
 
     res.status(200).json(response.data);
@@ -22,10 +24,10 @@ router.get("/comics", async (req, res) => {
 });
 
 // Get Comics list with a particular Character ID
-router.get("/comic/:id", async (req, res) => {
+router.get("/comics/:id", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.id}?apiKey=${process.env.MARVEL_API_KEY}`
+      `${apiUrl}/comics/${req.params.id}?apiKey=${process.env.MARVEL_API_KEY}`
     );
     res.status(200).json(response.data);
   } catch (error) {
