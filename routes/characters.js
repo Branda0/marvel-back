@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const apiUrl = "https://lereacteur-marvel-api.herokuapp.com";
+// const apiUrl = "http//localhost/4000";
 // const formidable = require("express-formidable");
 // router.use(formidable());
 
