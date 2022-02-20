@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());
 app.use(formidable());
 
-// mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
-mongoose.connect("mongodb://localhost/marvel");
+// mongoose.connect("mongodb://localhost/marvel");
 
 const usersRoutes = require("./routes/users");
 app.use(usersRoutes);
